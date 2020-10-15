@@ -12,6 +12,9 @@ const app = express();
 // set view engine
 app.set("view engine", "ejs");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // set up session cookies
 app.use(
   cookieSession({
@@ -46,14 +49,14 @@ mongoose
     console.log(err);
   });
 
-// set up routes
-app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
-
 // create home route
 app.get("/", (req, res) => {
   res.render("home", { user: req.user });
 });
+
+// set up routes
+app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
 
 app.listen(3004, () => {
   console.log("app now listening for requests on port 3004");
