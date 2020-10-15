@@ -6,7 +6,8 @@ module.exports = {
     clientSecret: "T0hpwDqPt2yrNwxsqZqB_yaP",
   },
   mongodb: {
-    dbURI: "",
+    dbURI:
+      "mongodb+srv://ashutosh:abcd1234@cluster0.8uttx.mongodb.net/<dbname>?retryWrites=true&w=majority",
   },
   session: {
     cookieKey: "worstproblemstatement",
