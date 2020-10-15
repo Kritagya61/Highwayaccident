@@ -4,6 +4,7 @@ const passport = require("passport");
 const authRoutes = require("./routes/auth-routes");
 const profileRoutes = require("./routes/profile-routes");
 const permitRoutes = require("./routes/permit-routes");
+const emergencyRoutes = require("./routes/emergency-routes");
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
@@ -59,6 +60,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/permit", permitRoutes);
+app.use("/emergency", emergencyRoutes);
 
 app.listen(3004, () => {
   console.log("app now listening for requests on port 3004");
