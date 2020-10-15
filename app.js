@@ -3,11 +3,10 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const authRoutes = require("./routes/auth-routes");
 const profileRoutes = require("./routes/profile-routes");
-const permitRoutes = require("./routes/profile-routes");
+const permitRoutes = require("./routes/permit-routes");
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
-const bodyParser = require("body-parser");
 const app = express();
 
 // set view engine
@@ -17,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // set up session cookies
+
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
