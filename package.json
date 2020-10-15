@@ -12,6 +12,7 @@
   "dependencies": {
     "cookie-session": "^1.4.0",
     "ejs": "^3.0.1",
+    "emailjs-com": "^2.6.3",
     "express": "^4.17.1",
     "mongoose": "^5.9.4",
     "nodemon": "^2.0.5",
