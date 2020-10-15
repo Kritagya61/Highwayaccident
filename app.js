@@ -11,8 +11,10 @@ const app = express();
 
 // set view engine
 app.set("view engine", "ejs");
+
 app.use(express.json());
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+
 // set up session cookies
 app.use(
   cookieSession({
