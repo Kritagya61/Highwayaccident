@@ -24,12 +24,11 @@ router.post("/", (req, res) => {
   feedback
     .save()
     .then((result) => {
-      res.json(result);
+      res.render("profile", { user: req.user });
     })
     .catch((err) => {
       res.json(err);
     });
-  res.render("profile", { user: req.user });
 });
 
 module.exports = router;
