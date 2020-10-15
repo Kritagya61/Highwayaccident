@@ -9,6 +9,6 @@ module.exports = {
     dbURI: "",
   },
   session: {
-    cookieKey: "thenetninjaisawesomeiguess",
+    cookieKey: "worstproblemstatement",
   },
 };
