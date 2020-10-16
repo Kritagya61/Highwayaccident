@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Review</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	 <header>
+    <h1>Provide feedback in the form below:-</h1>
+  </header>
+  <main>
+    <form class="form" action="/profile/" method="POST">
+      <div class="form-group">
+        <label for="highwayname">Select Highway</label>
+        <br>
+			<select class="form-control" id="highwayname" name="highwayname">
+			  <option value="nh1">NH-1</option>
+			  <option value="nh2">NH-2</option>
+			  <option value="nh3">NH-3</option>
+			  <option value="nh4">NH-4</option>
+			  <option value="nh5">NH-5</option>
+			  <option value="nh6">NH-6</option>
+			  <option value="nh7">NH-7</option>
+			  <option value="nh8">NH-8</option>
+			  <option value="nh9">NH-9</option>
+			  <option value="nh10">NH-10</option>
+			</select>
+      </div>
+      <div class="form-group">
+        <label for="description">Enter Description</label>
+        <textarea class="form-control" name="description" rows="3"></textarea>
+      </div>
+     <!--  <div class="form-group">
+        <label for="petrol">Availability of petrol pumps on highway</label>
+        <select class="form-control" name="petrol">
+          <option>Excellent</option>
+          <option>Good</option>
+          <option>Average</option>
+          <option>Bad</option>
+        </select>
+      </div> --> 
+      <!-- <div class="form-group">
+        <label for="roads">Road condition</label>
+        <select class="form-control" name="roads">
+          <option>Excellent</option>
+          <option>Good</option>
+          <option>Average</option>
+          <option>Bad</option>
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label for="experience">Your overall experience on the highway</label>
+        <select class="form-control" name="experience">
+          <option>Excellent</option>
+          <option>Good</option>
+          <option>Average</option>
+          <option>Bad</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+  </script>
+  </div>
+</div>
+</body>
+</html>
