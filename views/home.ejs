@@ -1,80 +1,270 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Highway Safety</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
     <style>
-        body {
-            font-family: arial;
-            margin: 0;
-        }
+      body {
+        font-family: arial;
+        margin: 0;
+      }
 
-        nav {
-            background: #ff5353;
-            padding: 20px 10px;
-        }
+      nav {
+        background: #ff5353;
+        padding: 20px 10px;
+      }
 
-        nav ul {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0;
-        }
+      nav ul {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0;
+      }
 
-        nav li {
-            list-style-type: none;
-            display: inline-block;
-            margin: 0 10px 0 0;
-        }
+      nav li {
+        list-style-type: none;
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
 
-        nav a {
-            color: #fff;
-            font-size: 18px;
-            background: rgba(255, 255, 255, 0.2);
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-        }
+      nav a {
+        color: #fff;
+        font-size: 18px;
+        background: rgba(255, 255, 255, 0.2);
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+      }
 
-        main,
-        header {
-            max-width: 960px;
-            margin: 30px auto;
-            padding: 0 10px;
-            color: #333;
-        }
+      main,
+      header {
+        max-width: 960px;
+        margin: 30px auto;
+        padding: 0 10px;
+        color: #333;
+      }
+      .card {
+        margin-bottom: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
-        <ul>
-            <% if (user) { %>
-            <li><a href="/auth/logout">Log out</a></li>
-            <% } else { %>
-            <li><a href="/auth/login">Login</a></li>
-            <% } %>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/profile">Feedback</a></li>
-            <li><a href="/permit">Permission</a></li>
-            <li><a href="/emergency">Emergency</a></li>
-        </ul>
+      <ul>
+        <% if (user) { %>
+        <li><a href="/auth/logout">Log out</a></li>
+        <% } else { %>
+        <li><a href="/auth/login">Login</a></li>
+        <% } %>
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/profile">Feedback</a></li>
+        <li><a href="/permit">Permission</a></li>
+        <li><a href="/emergency">Emergency</a></li>
+      </ul>
     </nav>
     <header>
-        <h1>Highway Safety</h1>
+      <h1>Highway Safety</h1>
     </header>
     <main>
-        <p>Continue to the website...</p>
+      <ul
+        class="nav nav-pills nav-justified mb-3"
+        id="pills-tab"
+        role="tablist"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="roads-tab"
+            data-toggle="pill"
+            href="#roads"
+            role="tab"
+            aria-controls="roads"
+            aria-selected="true"
+            >Roads</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="shops-tab"
+            data-toggle="pill"
+            href="#shops"
+            role="tab"
+            aria-controls="shops"
+            aria-selected="false"
+            >Shops</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="roads"
+          role="tabpanel"
+          aria-labelledby="roads-tab"
+        ></div>
+        <div
+          class="tab-pane fade"
+          id="shops"
+          role="tabpanel"
+          aria-labelledby="shops-tab"
+        ></div>
+      </div>
+      <div id="uid"></div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      axios.get("/profile/details").then((res) => {
+        const roads = document.querySelector("#roads");
+        let newobj = {};
+        res.data.forEach((val, index) => {
+          if (val.highwayname in newobj) {
+            newobj[val.highwayname].push(val);
+          } else {
+            newobj[val.highwayname] = [val];
+          }
+        });
+        for (let key in newobj) {
+          var desc = [];
+          let div = document.createElement("div");
+          let map = { Excellent: 0, Good: 0, Average: 0, Bad: 0 };
+          let map2 = { Excellent: 0, Good: 0, Average: 0, Bad: 0 };
+          newobj[key].forEach((val, index) => {
+            map[val.experience] = (map[val.experience] || 0) + 1;
+            map2[val.roads] = (map2[val.roads] || 0) + 1;
+            desc.push(val.description);
+          });
+          let unid = key;
+          div.innerHTML = `<div class="card">
+            <h5 class="card-header">${key}</h5>
+            <div class="card-body">
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-toggle="modal"
+                data-target="#${unid}"
+              >
+                Read Descriptions
+              </button>
+            </div>
+            <div class="card-footer text-muted">
+              <strong>Condition of roads:-</strong>
+              Excellent (${map["Excellent"]}) Good (${map["Good"]}) Average (${map["Average"]}) Bad (${map["Bad"]})
+            </div>
+            <div class="card-footer text-muted">
+              <strong>Average experience of people:-</strong>
+              Excellent (${map2["Excellent"]}) Good (${map2["Good"]}) Average (${map2["Average"]}) Bad (${map2["Bad"]})
+            </div>
+          </div>`;
+          roads.appendChild(div);
+          let uid = document.querySelector("#uid");
+          let modal = document.createElement("div");
+          let s = `<div
+                class="modal fade"
+                id="${unid}"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Descriptions</h5>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">`;
+          desc.forEach((value, index) => {
+            s += value + `<br />`;
+          });
+          modal.innerHTML =
+            s +
+            `</div>
+                    <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>`;
+          uid.appendChild(modal);
+        }
+      });
+      axios.get("/permit/details").then((res) => {
+        const shops = document.querySelector("#shops");
+        let newobj = {};
+        res.data.forEach((val, index) => {
+          if (val.highwayname in newobj) {
+            newobj[val.highwayname].push(val);
+          } else {
+            newobj[val.highwayname] = [val];
+          }
+        });
+        console.log(newobj);
+        for (let key in newobj) {
+          let div = document.createElement("div");
+          let map = {
+            Food: 0,
+            "Clothing & Footwear": 0,
+            "Vehicle maintainance": 0,
+            "Fuel station": 0,
+            Hotel: 0,
+          };
+          newobj[key].forEach((val, index) => {
+            map[val.shoptype] = (map[val.shoptype] || 0) + 1;
+          });
+          div.innerHTML = `<div class="card">
+            <h5 class="card-header">${key}</h5>
+            <div class="card-body">
+              <strong>Number of Food shops:-</strong>
+              ${map["Food"]}
+              <br />
+              <strong>Number of Clothing & Footwear shops:-</strong>
+              ${map["Clothing & Footwear"]}
+              <br />
+              <strong>Number of Vehicle Maintainance shops:-</strong>
+              ${map["Vehicle maintainance"]}
+              <br />
+              <strong>Number of Fuel stations:-</strong>
+              ${map["Fuel station"]}
+              <br />
+              <strong>Number of Hotels:-</strong>
+              ${map["Hotel"]}
+              <br />
+            </div>
+          </div>`;
+          shops.appendChild(div);
+        }
+      });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-    </script>
-</body>
-
+  </body>
 </html>

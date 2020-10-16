@@ -1,3 +1,4 @@
+const moment = require("moment");
 const router = require("express").Router();
 const FeedBackModel = require("../models/feedback-model");
 
@@ -12,9 +13,9 @@ router.get("/details", async (req, res) => {
     highwaylist = await FeedBackModel.find();
     for (var i = 0; i < highwaylist.length; i++) {
       var date1 = new Date();
-      var date2 = highwaylist[i].date;
-      var date3 = moment(date2, "dd MMM DD HH:mm:ss ZZ YYYY", "en");
-      var date4 = moment(date1, "dd MMM DD HH:mm:ss ZZ YYYY", "en");
+      var date2 = highwaylist[0].date;
+      var date3 = moment(date1, "dd MMM DD HH:mm:ss ZZ YYYY", "en");
+      var date4 = moment(date2, "dd MMM DD HH:mm:ss ZZ YYYY", "en");
       var diff = date4.diff(date3, "days");
       if (diff < 7) {
         recenthighway.push(highwaylist[i]);

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const PermitSchema = new Schema({
   brandname: String,
   shopname: String,
+  highwayname: String,
   shoptype: String,
   shopdesc: String,
 });
