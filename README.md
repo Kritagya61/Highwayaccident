@@ -5,6 +5,8 @@ This website will help in reducing the accidents that occur on highways by provi
 ## Screenshots
 * Homepage of the website <br/><br/>
 ![Homepage](https://i.imgur.com/kfrTErs.png)
+* Shops tab in the homepage <br/><br/>
+![Homepage 2](https://i.imgur.com/u3GRCiT.png)
 * Login Page <br/><br/>
 ![Login Page](https://i.imgur.com/032Z9lh.png)
 * Feedback Page. Fill out this form to provide feedback about the highway. <br/><br/>
