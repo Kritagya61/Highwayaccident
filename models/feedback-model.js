@@ -7,6 +7,10 @@ const FeedbackSchema = new Schema({
   petrol: String,
   roads: String,
   experience: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const FeedBack = mongoose.model("feedback", FeedbackSchema);
