@@ -5,13 +5,11 @@ router.get("/", (req, res) => {
   res.render("profile", { user: req.user });
 });
 
-router.get("/description", async (req, res) => {
+router.get("/details", async (req, res) => {
   try {
     let highwaylist = [];
     let recenthighway = [];
-    highwaylist = await FeedBackModel.find({
-      highwayname: req.params.highwayname,
-    });
+    highwaylist = await FeedBackModel.find();
     for (var i = 0; i < highwaylist.length; i++) {
       var date1 = new Date();
       var date2 = highwaylist[i].date;
@@ -19,7 +17,7 @@ router.get("/description", async (req, res) => {
       var date4 = moment(date1, "dd MMM DD HH:mm:ss ZZ YYYY", "en");
       var diff = date4.diff(date3, "days");
       if (diff < 7) {
-        recenthighway.push(highwaylist[i].description);
+        recenthighway.push(highwaylist[i]);
       }
     }
     res.json(recenthighway);
