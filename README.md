@@ -3,15 +3,15 @@ This website will help in reducing the accidents that occur on highways by provi
 ### Note - Open the website in a desktop for best experience.
 
 ## Screenshots
-* Homepage <br/><br/>
+* Homepage of the website <br/><br/>
 ![Homepage](https://i.imgur.com/kfrTErs.png)
 * Login Page <br/><br/>
 ![Login Page](https://i.imgur.com/032Z9lh.png)
-* Feedback Page. Fill out this form ti provide feedback about the highway. <br/><br/>
+* Feedback Page. Fill out this form to provide feedback about the highway. <br/><br/>
 ![Feedback](https://i.imgur.com/UxSfira.png)
-* Permissions Page. Here, shop owners can register their shop on this website for consumers to familiarize the highway.<br/><br/>
+* Permissions Page. Here, shop owners can register their shop on the website for consumers to get familiar with a particular highway.<br/><br/>
 ![States](https://i.imgur.com/7dLCTxJ.png)
-* Emergency Page. Users can fill out this form in case of a mishap. <br/><br/>
+* Emergency Page. Users can fill this form in case of a mishap. <br/><br/>
 ![Emergency](https://i.imgur.com/y5Jp31H.png)
 
 ## Technologies Used
